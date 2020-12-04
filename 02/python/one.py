@@ -9,6 +9,6 @@ for data in data_list:
     [range_raw, letter] = rule_raw.split(" ")
     [low, high] = map(int, range_raw.split("-"))
     letter_count = len(list(filter(lambda x: x == letter, password)))
-    if letter_count >= low and letter_count <= high:
+    if low <= letter_count <= high:
         valid_count = valid_count + 1
 print(f"There are {valid_count} valid passwords")
