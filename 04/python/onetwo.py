@@ -6,7 +6,7 @@ passports = [passport.strip().replace("\n", " ") for passport in raw.split("\n\n
 
 req_fields = ("byr", "iyr", "eyr", "hgt", "hcl", "ecl", "pid") # leaving out cid
 
-def check_passport_fields(p, req_fields):
+def check_fields_present(p):
     fields = p.split()
     keys = map( lambda x: x.split(":")[0] , fields)
     valid = list(filter( lambda x: x in req_fields, keys ))
@@ -43,17 +43,19 @@ def is_valid(k, v):
     elif k == "pid":
         return len(v)==9 and all([c in "0123456789" for c in v])
     else:
+        # e.g cid or any other
         return True
 
 def check_field_values(p):
     fields = p.split()
     for field in fields:
-        if not is_valid(*field.split(":")):
+        k, v = field.split(":")
+        if not is_valid(k, v):
             return False
     return True
  
-valid_one = sum([check_passport_fields(p, req_fields) for p in passports])
-valid_two = sum([check_passport_fields(p, req_fields) and check_field_values(p) for p in passports])
+valid_one = sum([check_fields_present(p) for p in passports])
+valid_two = sum([check_fields_present(p) and check_field_values(p) for p in passports])
 
 print( f"Task one: {valid_one}")
 print( f"Task two: {valid_two}")
