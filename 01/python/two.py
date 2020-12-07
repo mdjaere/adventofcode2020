@@ -11,7 +11,7 @@ for i in indices:
         for k in filter(lambda x: x not in [i, j], indices):
             c = data[k]
             if a + b + c == 2020:
-                print(f"{a} * {b} * {c} = {a * b * c}")
+                print(f"{a} + {b} + {c} = {a + b + c}")
                 solved = True
             if solved:
                 break

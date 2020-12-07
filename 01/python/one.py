@@ -9,7 +9,7 @@ for i in indices:
     for j in filter(lambda x: x is not i, indices):
         b = data[j]
         if a + b == 2020:
-            print(f"{a} * {b} = {a * b}")
+            print(f"{a} + {b} = {a + b}")
             solved = True
         if solved:
             break
