@@ -25,8 +25,7 @@ print("part1", acc)
 
 # Part2
 
-idx_to_swap = [i for i, line in enumerate(lines) if line[0]
-               == "jmp" or line[0] == "nop"]
+idx_to_swap = [i for i, line in enumerate(lines) if line[0] in ["nop", "jmp"]]
 
 for i_swap in idx_to_swap:
     done_indices = []
