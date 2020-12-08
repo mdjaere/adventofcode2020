@@ -5,13 +5,13 @@ lines = [line.replace("\n", "").split() for line in fileinput.input()]
 
 # Part 1
 i = 0
-done_indices = []
+seen = []
 acc = 0
 
-while not i in done_indices:
+while not i in seen:
     cmd, n = lines[i]
     num = int(n)
-    done_indices.append(i)
+    seen.append(i)
     if cmd == "acc":
         acc += num
         i += 1
@@ -26,28 +26,27 @@ print("part1", acc)
 # Part2
 
 for i_swap in range(len(lines)):
-    done_indices = []
+    seen = []
     acc = 0
     i = 0
-    while not i in done_indices:
+    while not i in seen:
         if i >= len(lines):
             break
         cmd, n = lines[i]
+        if i == i_swap:
+            if cmd == "jmp":
+                cmd = "nop"
+            elif cmd == "nop":
+                cmd = "jmp"
         num = int(n)
-        done_indices.append(i)
+        seen.append(i)
         if cmd == "acc":
             acc += num
             i += 1
         elif cmd == "nop":
-            if i == i_swap:
-                i += num
-            else:
-                i += 1
+            i += 1
         elif cmd == "jmp":
-            if i == i_swap:
-                i += 1
-            else:
-                i += num
+            i += num
     if i == len(lines):
         break
 
