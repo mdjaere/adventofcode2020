@@ -11,6 +11,7 @@ acc = 0
 while not i in done_indices:
     cmd, n = lines[i]
     num = int(n)
+    done_indices.append(i)
     if cmd == "acc":
         acc += num
         i += 1
@@ -18,7 +19,6 @@ while not i in done_indices:
         i += 1
     elif cmd == "jmp":
         i += num
-    done_indices.append(i)
 
 print("part1", acc)
 
@@ -37,6 +37,7 @@ for i_swap in idx_to_swap:
             break
         cmd, n = lines[i]
         num = int(n)
+        done_indices.append(i)
         if cmd == "acc":
             acc += num
             i += 1
@@ -50,8 +51,6 @@ for i_swap in idx_to_swap:
                 i += 1
             else:
                 i += num
-        done_indices.append(i)
-
     if i == len(lines):
         break
 
