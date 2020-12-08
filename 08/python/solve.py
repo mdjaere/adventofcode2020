@@ -25,7 +25,7 @@ print("part1", acc)
 
 # Part2
 
-for i_swap in range(len(lines)):
+for line_to_swap in [idx for idx, line in enumerate(lines) if line[0] in ["jmp", "nop"]]:
     seen = []
     acc = 0
     i = 0
@@ -33,7 +33,7 @@ for i_swap in range(len(lines)):
         if i >= len(lines):
             break
         cmd, n = lines[i]
-        if i == i_swap:
+        if i == line_to_swap:
             if cmd == "jmp":
                 cmd = "nop"
             elif cmd == "nop":
