@@ -30,7 +30,7 @@ for line_to_swap in [idx for idx, line in enumerate(lines) if line[0] in ["jmp",
     acc = 0
     i = 0
     while not i in seen:
-        if i >= len(lines):
+        if not 0 <= i < len(lines):
             break
         cmd, n = lines[i]
         if i == line_to_swap:
