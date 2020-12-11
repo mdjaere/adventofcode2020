@@ -25,8 +25,11 @@ def n_combos(d_list):
     if len(deltas) <= 2:
         return 0
     elif deltas not in table:
+        # Continue on base branch
         table[deltas] = n_combos(deltas[1:])
         if deltas[0] < 3 and deltas[1] == 1:
+            # Add 1 new branch!
+            # Add the finding and continue processing the new branch
             table[deltas] += 1 + n_combos([deltas[0] + 1, *deltas[2:]])
     return table[deltas]
 
