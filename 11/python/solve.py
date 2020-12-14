@@ -6,6 +6,7 @@ seats = np.array([[c for c in line] for line in lines])
 
 # Part 1
 
+
 def count_adjacent(c_seats, c, r):
     padded = np.pad(c_seats, 1)
 
@@ -37,7 +38,7 @@ while unstable:
     print(count)
     if count == last_count:
         unstable = False
-    ref_seats = new_seats.copy()
+    ref_seats = new_seats
     last_count = count
 
 print("p1", last_count)
@@ -98,7 +99,7 @@ while unstable:
     print(count)
     if count == last_count:
         unstable = False
-    ref_seats = new_seats.copy()
+    ref_seats = new_seats
     last_count = count
 
 print("p2", last_count)
