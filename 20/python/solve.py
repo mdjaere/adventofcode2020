@@ -50,14 +50,10 @@ class Tile:
     def set_variant(self, x):
         if not self.locked:
             self.variant = x
-        else:
-            print(f"transformation attempted on locked tile {self.id}")
         return self
 
 
 tiles = [Tile(text_tile.split("\n")) for text_tile in raw.split("\n\n")]
-
-found = False
 
 tiles[0].locked = True
 q = deque([tiles[0]])
@@ -141,4 +137,4 @@ for transform in tile_transforms:
 
 wave_count = (image == "#").sum() - (monster_count * hash_count)
 
-print("Part 2: ", wave_count)
+print("Part 2:", wave_count)
